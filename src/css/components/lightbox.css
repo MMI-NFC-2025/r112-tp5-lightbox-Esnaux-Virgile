@@ -1,3 +1,49 @@
 /**
 * Lightbox
 */
+
+img[data-full-img] {
+    cursor: pointer;
+}
+
+#lightbox {
+    border: none;
+    max-width: 90vw;
+    max-height: 90vh;
+    margin: auto;
+}
+
+#lightbox[open] {
+    animation: lightboxIn 600ms;
+}
+
+@keyframes lightboxIn {
+    from {
+        transform: scale(0.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes backdropIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+dialog#lightbox::backdrop {
+    animation: backdropIn 600ms;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
